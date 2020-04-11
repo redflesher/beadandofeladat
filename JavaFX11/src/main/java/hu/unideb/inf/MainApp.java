@@ -17,6 +17,7 @@ public class MainApp extends Application {
         stage.setTitle("Lakosság Nyilvántartás");
         stage.setScene(scene);
         
+        //git proba
         ((FXMLLakossagSceneController)loader.getController()).setModel(new Model());
         
         stage.show();
