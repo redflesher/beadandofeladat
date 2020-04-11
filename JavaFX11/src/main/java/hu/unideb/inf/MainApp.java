@@ -18,6 +18,8 @@ public class MainApp extends Application {
         stage.setScene(scene);
         
         //git proba
+        //git masodik prba
+        
         ((FXMLLakossagSceneController)loader.getController()).setModel(new Model());
         
         stage.show();
