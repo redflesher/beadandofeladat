@@ -20,10 +20,6 @@ public class MainApp extends Application {
         ((FXMLLakossagSceneController)loader.getController()).setModel(new Model());
         
         
-        //asdsadsad
-        
-        
-        
         stage.show();
     }    
  
