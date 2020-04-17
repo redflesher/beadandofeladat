@@ -26,5 +26,6 @@
         <property name="hibernate.dbcp.minIdle">5</property>
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         <mapping class="hu.unideb.inf.model.Ember" />
+        <mapping class="hu.unideb.inf.model.Address" />
     </session-factory>
 </hibernate-configuration>
