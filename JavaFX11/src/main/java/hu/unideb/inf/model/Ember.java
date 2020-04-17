@@ -3,7 +3,13 @@ package hu.unideb.inf.model;
 import java.io.*;
 import javax.persistence.*;
 
-@Entity
+enum Gender
+{
+    MALE,
+    FEMALE
+}
+
+@javax.persistence.Entity
 @Table(name = "people")
 public class Ember implements Serializable{
     
@@ -13,7 +19,7 @@ public class Ember implements Serializable{
     private int id;
     
     @Column(name = "Gender")
-    private String gender;
+    private Gender gender;
     
     @Column (name = "Name")
     private String name;
@@ -28,7 +34,7 @@ public class Ember implements Serializable{
     private String tbNumber;
     
     @Column (name = "Home_Address")
-    private String homeAddress;
+    private Address homeAddress;
     
     @Column(name = "Phone_Number")
     private String phoneNumber;
@@ -42,11 +48,11 @@ public class Ember implements Serializable{
     }
 
     public String getGender() {
-        return gender;
+        return gender.toString();
     }
 
     public void setGender(String gender) {
-        this.gender = gender;
+        this.gender = Enum.valueOf(Gender.class, gender);
     }
 
     public String getName() {
@@ -82,11 +88,11 @@ public class Ember implements Serializable{
     }
 
     public String getHomeAddress() {
-        return homeAddress;
+        return homeAddress.toString();
     }
 
     public void setHomeAddress(String homeAddress) {
-        this.homeAddress = homeAddress;
+        this.homeAddress.setAddress(homeAddress); ;
     }
 
     public String getPhoneNumber() {
@@ -96,14 +102,18 @@ public class Ember implements Serializable{
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-       public Ember(String name, String placeOfBirth, String dateOfBirth, String gender, String tbNumber, String homeAddress, String phoneNumber) {
+       
+    public Ember(){
+        
+    }
+    
+    public Ember(String name, String placeOfBirth, String dateOfBirth, Gender gender, String tbNumber, String homeAddress, String phoneNumber) {
         this.gender = gender;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.placeOfBirth = placeOfBirth;
         this.tbNumber = tbNumber;
-        this.homeAddress = homeAddress;
+        this.homeAddress= new Address(homeAddress);
         this.phoneNumber = phoneNumber;
     }
     
@@ -111,8 +121,8 @@ public class Ember implements Serializable{
         this.dateOfBirth = str.readUTF();
         this.placeOfBirth = str.readUTF();
         this.name  = str.readUTF();
-        this.gender  = str.readUTF();
-        this.homeAddress  = str.readUTF();
+        this.gender  = Enum.valueOf(Gender.class,str.readUTF());
+        this.homeAddress.setAddress(str.readUTF());
         this.phoneNumber = str.readUTF();
         this.tbNumber = str.readUTF();
     }
@@ -121,8 +131,8 @@ public class Ember implements Serializable{
         str.writeUTF(name);
         str.writeUTF(dateOfBirth);
         str.writeUTF(placeOfBirth);
-        str.writeUTF(gender);
-        str.writeUTF(homeAddress);
+        str.writeUTF(gender.toString());
+        str.writeUTF(homeAddress.toString());
         str.writeUTF(phoneNumber);
         str.writeUTF(tbNumber);
     }
