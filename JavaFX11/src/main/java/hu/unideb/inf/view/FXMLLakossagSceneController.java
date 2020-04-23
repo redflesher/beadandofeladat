@@ -1,6 +1,7 @@
 package hu.unideb.inf.view;
 
 import hu.unideb.inf.hibernate.HibernateUtil;
+import hu.unideb.inf.model.Ember;
 import hu.unideb.inf.model.Model;
 import java.io.IOException;
 import java.net.URL;
@@ -40,6 +41,21 @@ public class FXMLLakossagSceneController implements Initializable {
     @FXML
     private TextField phoneTextfiled;
     
+    @FXML
+    private TextField nameTextfield_animal;
+
+    @FXML
+    private TextField dateOfBirthTextfiled_animal;
+
+    @FXML
+    private TextField ownerIDTextfield;
+
+    @FXML
+    private TextField genderTextfield_animal;
+
+    @FXML
+    private TextField speciesTextfield;
+    
     void SetAndUploadModel(){
         model.getEmber().setDateOfBirth(dateOfBirthTextfield.getText());
         model.getEmber().setGender(genderTextfield.getText());
@@ -61,6 +77,27 @@ public class FXMLLakossagSceneController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    void SetAndUploadModelAnimal() {
+        model.getAnimal().setDateOfBirth(dateOfBirthTextfiled_animal.getText());
+        model.getAnimal().setGender(genderTextfield_animal.getText());
+        model.getAnimal().setSpecies(speciesTextfield.getText());
+        model.getAnimal().setName(nameTextfield_animal.getText());
+        model.getAnimal().setOwnerID(Ember.class.cast(ownerIDTextfield.getText()));
+        
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            session.save(model.getAnimal());
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     void handleCancelButtonPushed() throws IOException{
@@ -76,7 +113,21 @@ public class FXMLLakossagSceneController implements Initializable {
     @FXML
     void handleUploadButtonPushed() throws IOException, ClassNotFoundException{
         SetAndUploadModel();
-    }    
+    }
+
+    @FXML
+    void animal_handleCancelButtonPushed() {
+        nameTextfield_animal.setText("");
+        dateOfBirthTextfiled_animal.setText("");
+        ownerIDTextfield.setText("");
+        genderTextfield_animal.setText("");
+        speciesTextfield.setText("");
+    }
+
+    @FXML
+    void animal_handleUploadButtonPushed() {
+        SetAndUploadModelAnimal();
+    }
     
       
     @Override
