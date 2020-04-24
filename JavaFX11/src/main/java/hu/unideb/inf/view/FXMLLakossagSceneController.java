@@ -11,9 +11,11 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -37,6 +39,11 @@ public class FXMLLakossagSceneController implements Initializable {
 
     @FXML
     private TextField genderTextfield;
+        
+    @FXML
+    private ChoiceBox<String> genderChoiceBox;
+    
+    ObservableList<String> genderList = FXCollections.observableArrayList("MALE", "FEMALE");
 
     @FXML
     private TextField socialSecurityNumberTextfiled;
@@ -270,6 +277,8 @@ public class FXMLLakossagSceneController implements Initializable {
       
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        genderChoiceBox.setValue("MALE");
+        genderChoiceBox.setItems(genderList);
     }
 
 }
