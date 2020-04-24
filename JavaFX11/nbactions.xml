@@ -7,12 +7,9 @@
             </packagings>
             <goals>
                 <goal>clean</goal>
-                <goal>package</goal>
-                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:java</goal>
+                <goal>javafx:run</goal>
+                
             </goals>
-            <properties>
-                <runfx.args>-jar "${project.build.directory}/${project.build.finalName}.jar"</runfx.args>
-            </properties>
         </action>
         <action>
             <actionName>debug</actionName>
