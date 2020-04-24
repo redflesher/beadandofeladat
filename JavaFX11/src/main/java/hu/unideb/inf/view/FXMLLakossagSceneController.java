@@ -5,9 +5,15 @@ import hu.unideb.inf.model.Model;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -55,6 +61,68 @@ public class FXMLLakossagSceneController implements Initializable {
 
     @FXML
     private TextField speciesTextfield;
+    
+    //van-e benne szam
+    boolean isSzam(TextField textField){
+        for (char c : textField.getText().toCharArray()) {
+            if (Character.isDigit(c)) 
+                return true;
+        }
+        return false;
+    }
+    
+    //helyes datum van megadva
+    boolean isDatum(TextField textField) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            java.util.Date date = format.parse(textField.getText());
+            return textField.getText().length() != 10;
+        } catch (ParseException ex) {
+            return true;
+        }
+        
+    }
+
+    //van-e benne betu
+    boolean isBetu(TextField textField){
+        for (char c : textField.getText().toCharArray()) {
+            if (Character.isLetter(c)) 
+                return true;
+        }
+        return false;
+    }
+    
+    //van-e benne specialis karakter
+    boolean isSpecialis(TextField textField){
+        for (char c : textField.getText().toCharArray()) {
+            if (!Character.isSpaceChar(c)) 
+                if (!Character.isLetterOrDigit(c)) 
+                    return true;
+        }
+        return false;
+    }
+    
+    boolean hibasBemenet_ember(Alert alert){
+        alert.setTitle("Error!");
+        alert.setHeaderText("A adatbázisba való feltöltés nem történt meg!");
+        if (nameTextfield.getText().isBlank() || placeOfBirthTextfiled.getText().isBlank() || dateOfBirthTextfield.getText().isBlank() || genderTextfield.getText().isBlank() || socialSecurityNumberTextfiled.getText().isBlank() || homeAddressTextfield.getText().isBlank() || phoneTextfiled.getText().isBlank()) {
+            alert.setContentText("Kérem töltse ki az üres mezőket!");
+            return false;
+        }else if (isSpecialis(nameTextfield) || isSpecialis(placeOfBirthTextfiled) /*|| isSpecialis(dateOfBirthTextfield) */|| isSpecialis(genderTextfield) || isSpecialis(socialSecurityNumberTextfiled) || isSpecialis(homeAddressTextfield) || isSpecialis(phoneTextfiled)) {
+            alert.setContentText("A bemenetek között ne szerepeltessen speciális karaktereket!");
+            return false;
+        }else if (isSzam(nameTextfield) ||isSzam(placeOfBirthTextfiled) || isSzam(genderTextfield)) {
+            alert.setContentText("A név, a nem és a születési hely nem tartalmazhat számokat!");
+            return false;
+        }else if (isBetu(dateOfBirthTextfield) || isBetu(socialSecurityNumberTextfiled) || isBetu(phoneTextfiled)) {
+            alert.setContentText("A születési dátum, a TB szám és a telefonszám nem tartalmazhat betűket!");
+            return false;
+        }else if (isDatum(dateOfBirthTextfield)) {
+            alert.setContentText("Kérem YYYY-MM-DD formátumban adja meg a születési dátumat!");
+            return false;
+        }
+        return true;
+    }
     
     void SetAndUploadModel(){
         model.getEmber().setDateOfBirth(dateOfBirthTextfield.getText());
@@ -133,11 +201,19 @@ public class FXMLLakossagSceneController implements Initializable {
         homeAddressTextfield.setText("");
         phoneTextfiled.setText("");
         socialSecurityNumberTextfiled.setText("");
+        //System.out.println(isDatum(socialSecurityNumberTextfiled));
     }
 
     @FXML
     void handleUploadButtonPushed() throws IOException, ClassNotFoundException{
-        SetAndUploadModel();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        if (hibasBemenet_ember(alert)) {
+            SetAndUploadModel();
+            alert.setTitle("Sikeres feltöltés!");
+            alert.setHeaderText("A feltöltés megtörtént!");
+            alert.setContentText(nameTextfield.getText() + " mostantól szerepel az adatbázisban!");
+        }
+        alert.showAndWait();
     }
 
     @FXML
