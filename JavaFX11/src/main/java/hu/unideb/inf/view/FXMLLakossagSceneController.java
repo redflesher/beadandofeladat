@@ -1,7 +1,6 @@
 package hu.unideb.inf.view;
 
 import hu.unideb.inf.hibernate.HibernateUtil;
-import hu.unideb.inf.model.Ember;
 import hu.unideb.inf.model.Model;
 import java.io.IOException;
 import java.net.URL;
@@ -79,23 +78,48 @@ public class FXMLLakossagSceneController implements Initializable {
         }
     }
     
-    void SetAndUploadModelAnimal() {
+    void SetAndUploadModelAnimal() throws SQLException{
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
+        Statement st = conn.createStatement();
+        ResultSet  rs = st.executeQuery("SELECT * from people");
+        ResultSetMetaData nevek = rs.getMetaData();
+        int columns = nevek.getColumnCount();
+        int x = 0;
+        while(rs.next()){
+            for(int i = 1; i <= columns;i++){
+                if (rs.getString(i).equals(ownerIDTextfield.getText())){
+                    //System.out.println(rs.getString(i+1));
+                    model.getEmber().setId(Integer.parseInt(rs.getString(i-4)));
+                    model.getEmber().setDateOfBirth(rs.getString(i-3));
+                    model.getEmber().setGender(rs.getString(i-2));
+                    model.getEmber().setHomeAddress(rs.getString(i-1));
+                    model.getEmber().setName(rs.getString(i));
+                    model.getEmber().setPhoneNumber(rs.getString(i+1));
+                    model.getEmber().setPlaceOfBirth(rs.getString(i+2));
+                    model.getEmber().setTbNumber(rs.getString(i+3));
+                    x = 1;
+                }
+            }
+        }        
         model.getAnimal().setDateOfBirth(dateOfBirthTextfiled_animal.getText());
         model.getAnimal().setGender(genderTextfield_animal.getText());
         model.getAnimal().setSpecies(speciesTextfield.getText());
         model.getAnimal().setName(nameTextfield_animal.getText());
-        model.getAnimal().setOwnerID(Ember.class.cast(ownerIDTextfield.getText()));
+        model.getAnimal().setOwnerID(model.getEmber());
         
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()){
-            transaction = session.beginTransaction();
-            session.save(model.getAnimal());
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
+        if (x == 1) {
+            Transaction transaction = null;
+            try (Session session = HibernateUtil.getSessionFactory().openSession()){
+                transaction = session.beginTransaction();
+                session.save(model.getAnimal());
+                transaction.commit();
+            } catch (Exception e) {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+                e.printStackTrace();
             }
-            e.printStackTrace();
+            x = 0;
         }
     }
 
@@ -117,31 +141,53 @@ public class FXMLLakossagSceneController implements Initializable {
     }
 
     @FXML
-    void animal_handleCancelButtonPushed() {
+    void animal_handleCancelButtonPushed() throws IOException, SQLException{
         nameTextfield_animal.setText("");
         dateOfBirthTextfiled_animal.setText("");
         ownerIDTextfield.setText("");
         genderTextfield_animal.setText("");
-        speciesTextfield.setText("");
+        speciesTextfield.setText("");/*
         
         Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
         Statement st = conn.createStatement();
-        ResultSet  rs = st.executeQuery("SELECT name from people");
+        String string = speciesTextfield.getText();
+        ResultSet  rs = st.executeQuery("SELECT * from people");
         ResultSetMetaData nevek = rs.getMetaData();
         int columns = nevek.getColumnCount();
+        int x = 0;
         while(rs.next()){
             for(int i = 1; i <= columns;i++){
-                if(i > 1) System.out.println(", ");
+                if (rs.getString(i).equals(string)){
+                    //System.out.println(rs.getString(i+1));
+                    model.getEmber().setId(Integer.parseInt(rs.getString(i-4)));
+                    model.getEmber().setDateOfBirth(rs.getString(i-3));
+                    model.getEmber().setGender(rs.getString(i-2));
+                    model.getEmber().setHomeAddress(rs.getString(i-1));
+                    model.getEmber().setName(rs.getString(i));
+                    model.getEmber().setPhoneNumber(rs.getString(i+1));
+                    model.getEmber().setPlaceOfBirth(rs.getString(i+2));
+                    model.getEmber().setTbNumber(rs.getString(i+3));
+                    x++;
+                }
+                /*if(i > 1) 
+                    System.out.print(", ");
+                
                 String columnValue = rs.getString(i);
-                System.out.println(columnValue);
+                System.out.print(columnValue);
             }
-            System.out.println("");
         }
+        //System.out.println("");
+            if (x == 0)
+                System.out.println("nincs ilyen");
+            else{
+                System.out.println("van ilyen");
+                System.out.println(model.getEmber());
+            }*/
 
     }
 
     @FXML
-    void animal_handleUploadButtonPushed() {
+    void animal_handleUploadButtonPushed() throws SQLException{
         SetAndUploadModelAnimal();
     }
     

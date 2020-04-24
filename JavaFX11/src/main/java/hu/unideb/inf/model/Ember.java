@@ -97,7 +97,10 @@ public class Ember implements Serializable{
         this.phoneNumber = phoneNumber;
     }
 
-       public Ember(String name, String placeOfBirth, String dateOfBirth, String gender, String tbNumber, String homeAddress, String phoneNumber) {
+    public Ember() {
+    }
+     
+    public Ember(String name, String placeOfBirth, String dateOfBirth, String gender, String tbNumber, String homeAddress, String phoneNumber) {
         this.gender = gender;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -125,6 +128,11 @@ public class Ember implements Serializable{
         str.writeUTF(homeAddress);
         str.writeUTF(phoneNumber);
         str.writeUTF(tbNumber);
+    }
+
+    @Override
+    public String toString() {
+        return "Ember{" + "id=" + id + ", gender=" + gender + ", name=" + name + ", dateOfBirth=" + dateOfBirth + ", placeOfBirth=" + placeOfBirth + ", tbNumber=" + tbNumber + ", homeAddress=" + homeAddress + ", phoneNumber=" + phoneNumber + '}';
     }
     
 }

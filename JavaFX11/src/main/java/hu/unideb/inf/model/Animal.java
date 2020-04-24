@@ -10,13 +10,21 @@ public class Animal implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID", unique = true)
+    @Column(name = "ID")
     private int id;
     
     @ManyToOne
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "owner_id")
     private Ember ownerID = null;
+
+    public Ember getOwnerID() {
+        return ownerID;
+    }
+
+    public void setOwnerID(Ember ownerID) {
+        this.ownerID = ownerID;
+    }
     
     @Column(name = "Gender")
     private String gender;
@@ -36,14 +44,6 @@ public class Animal implements Serializable{
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Ember getOwnerID() {
-        return ownerID;
-    }
-
-    public void setOwnerID(Ember ownerID) {
-        this.ownerID = ownerID;
     }
 
     public String getGender() {
@@ -76,6 +76,9 @@ public class Animal implements Serializable{
 
     public void setSpecies(String species) {
         this.species = species;
+    }
+
+    public Animal() {
     }
 
     public Animal(String gender, String name, String dateOfBirth, String species) {

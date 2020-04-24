@@ -123,7 +123,7 @@
                               <TextField fx:id="ownerIDTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <TextField fx:id="genderTextfield_animal" maxWidth="200.0" GridPane.columnIndex="3" />
                               <TextField fx:id="speciesTextfield" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Label text="Owner ID:" wrapText="true" GridPane.rowIndex="2">
+                              <Label text="Owner Name:" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
