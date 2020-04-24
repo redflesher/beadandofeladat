@@ -7,11 +7,9 @@ import java.net.URL;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -27,7 +25,7 @@ public class FXMLLakossagSceneController implements Initializable {
     public void setModel(Model model) {
         this.model = model;
     }
-
+    
     @FXML
     private TextField nameTextfield;
 
@@ -37,14 +35,11 @@ public class FXMLLakossagSceneController implements Initializable {
     @FXML
     private TextField dateOfBirthTextfield;
 
-    @FXML
-    private TextField genderTextfield;
-        
+    ObservableList<String> GenderList = FXCollections.observableArrayList("MALE","FEMALE", "-Please select from the list!-");
+     
     @FXML
     private ChoiceBox<String> genderChoiceBox;
     
-    ObservableList<String> genderList = FXCollections.observableArrayList("MALE", "FEMALE");
-
     @FXML
     private TextField socialSecurityNumberTextfiled;
 
@@ -112,13 +107,13 @@ public class FXMLLakossagSceneController implements Initializable {
     boolean hibasBemenet_ember(Alert alert){
         alert.setTitle("Error!");
         alert.setHeaderText("A adatbázisba való feltöltés nem történt meg!");
-        if (nameTextfield.getText().isBlank() || placeOfBirthTextfiled.getText().isBlank() || dateOfBirthTextfield.getText().isBlank() || genderTextfield.getText().isBlank() || socialSecurityNumberTextfiled.getText().isBlank() || homeAddressTextfield.getText().isBlank() || phoneTextfiled.getText().isBlank()) {
+        if (nameTextfield.getText().isBlank() || placeOfBirthTextfiled.getText().isBlank() || dateOfBirthTextfield.getText().isBlank() || socialSecurityNumberTextfiled.getText().isBlank() || homeAddressTextfield.getText().isBlank() || phoneTextfiled.getText().isBlank()) {
             alert.setContentText("Kérem töltse ki az üres mezőket!");
             return false;
-        }else if (isSpecialis(nameTextfield) || isSpecialis(placeOfBirthTextfiled) /*|| isSpecialis(dateOfBirthTextfield) */|| isSpecialis(genderTextfield) || isSpecialis(socialSecurityNumberTextfiled) || isSpecialis(homeAddressTextfield) || isSpecialis(phoneTextfiled)) {
+        }else if (isSpecialis(nameTextfield) || isSpecialis(placeOfBirthTextfiled)|| isSpecialis(socialSecurityNumberTextfiled) || isSpecialis(homeAddressTextfield) || isSpecialis(phoneTextfiled)) {
             alert.setContentText("A bemenetek között ne szerepeltessen speciális karaktereket!");
             return false;
-        }else if (isSzam(nameTextfield) ||isSzam(placeOfBirthTextfiled) || isSzam(genderTextfield)) {
+        }else if (isSzam(nameTextfield) ||isSzam(placeOfBirthTextfiled)) {
             alert.setContentText("A név, a nem és a születési hely nem tartalmazhat számokat!");
             return false;
         }else if (isBetu(dateOfBirthTextfield) || isBetu(socialSecurityNumberTextfiled) || isBetu(phoneTextfiled)) {
@@ -127,13 +122,16 @@ public class FXMLLakossagSceneController implements Initializable {
         }else if (isDatum(dateOfBirthTextfield)) {
             alert.setContentText("Kérem YYYY-MM-DD formátumban adja meg a születési dátumat!");
             return false;
+        }else if (genderChoiceBox.getValue().equals("-Please select from the list!-")) {
+            alert.setContentText("Kérem, válasszon a listából!");
+            return false;
         }
         return true;
     }
     
     void SetAndUploadModel(){
         model.getEmber().setDateOfBirth(dateOfBirthTextfield.getText());
-        model.getEmber().setGender(genderTextfield.getText());
+        model.getEmber().setGender(genderChoiceBox.getValue());
         model.getEmber().setHomeAddress(homeAddressTextfield.getText());
         model.getEmber().setName(nameTextfield.getText());
         model.getEmber().setPhoneNumber(phoneTextfiled.getText());
@@ -163,7 +161,6 @@ public class FXMLLakossagSceneController implements Initializable {
         while(rs.next()){
             for(int i = 1; i <= columns;i++){
                 if (rs.getString(i).equals(ownerIDTextfield.getText())){
-                    //System.out.println(rs.getString(i+1));
                     model.getEmber().setId(Integer.parseInt(rs.getString(i-4)));
                     model.getEmber().setDateOfBirth(rs.getString(i-3));
                     model.getEmber().setGender(rs.getString(i-2));
@@ -204,10 +201,10 @@ public class FXMLLakossagSceneController implements Initializable {
         dateOfBirthTextfield.setText("");
         placeOfBirthTextfiled.setText("");
         nameTextfield.setText("");
-        genderTextfield.setText("");
         homeAddressTextfield.setText("");
         phoneTextfiled.setText("");
         socialSecurityNumberTextfiled.setText("");
+        genderChoiceBox.setValue("-Please select from the list!-");
         //System.out.println(isDatum(socialSecurityNumberTextfiled));
     }
 
@@ -274,11 +271,10 @@ public class FXMLLakossagSceneController implements Initializable {
         SetAndUploadModelAnimal();
     }
     
-      
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        genderChoiceBox.setValue("MALE");
-        genderChoiceBox.setItems(genderList);
+    public void initialize(URL url, ResourceBundle rb){
+        genderChoiceBox.setValue("-Please select from the list!-");
+        genderChoiceBox.setItems(GenderList);
     }
 
 }

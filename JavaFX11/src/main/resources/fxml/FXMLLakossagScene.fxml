@@ -61,11 +61,10 @@
                               <TextField fx:id="nameTextfield" maxWidth="200.0" GridPane.columnIndex="1" />
                               <TextField fx:id="placeOfBirthTextfiled" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <TextField fx:id="dateOfBirthTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField fx:id="genderTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <TextField fx:id="socialSecurityNumberTextfiled" maxWidth="200.0" GridPane.columnIndex="3" />
                               <TextField fx:id="homeAddressTextfield" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                               <TextField fx:id="phoneTextfiled" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                              <ChoiceBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                              <ChoiceBox fx:id="genderChoiceBox" maxWidth="200.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleUploadButtonPushed" prefHeight="56.0" prefWidth="122.0" text="Upload">
