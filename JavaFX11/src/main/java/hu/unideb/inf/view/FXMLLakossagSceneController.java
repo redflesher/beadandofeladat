@@ -35,7 +35,7 @@ public class FXMLLakossagSceneController implements Initializable {
     @FXML
     private TextField dateOfBirthTextfield;
 
-    ObservableList<String> GenderList = FXCollections.observableArrayList("MALE","FEMALE", "-Please select from the list!-");
+    ObservableList<String> GenderList = FXCollections.observableArrayList("MALE","FEMALE", "-Please, select from the list!-");
      
     @FXML
     private ChoiceBox<String> genderChoiceBox;
@@ -108,10 +108,20 @@ public class FXMLLakossagSceneController implements Initializable {
     //telefonszam-e
     private boolean  isPhone(TextField textField){
         String str = textField.getText();
-        char x = '+';
         if (str.length() != 12) 
             return true;
         else return str.charAt(0) != '+';
+    }
+    
+    //TAJ szám-e
+    private  boolean isTaj(TextField textField){
+        String str = textField.getText();
+        if (str.length() != 11) 
+            return true;
+        else if (str.charAt(3) == '-' && str.charAt(7) == '-')
+            return false;
+                
+        return true;
     }
 
     //van-e benne betu
@@ -133,14 +143,25 @@ public class FXMLLakossagSceneController implements Initializable {
         return false;
     }
     
-    private boolean hibasBemenet_ember(Alert alert){
+    //hibas bemenetek hibauzenetei az emberek feltöltéséhez
+    private boolean hibasBemenet_ember(Alert alert)throws SQLException{
         alert.setTitle("Error!");
         alert.setHeaderText("A adatbázisba való feltöltés nem történt meg!");
+        
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
+        Statement st = conn.createStatement();
+        ResultSet  rs = st.executeQuery("SELECT * from people");
+        int x = 0;
+        while(rs.next()){
+            for(int i = 1; i <= rs.getMetaData().getColumnCount();i++)
+                if (rs.getString(i).equals(nameTextfield.getText()) && rs.getString(i-3).equals(dateOfBirthTextfield.getText()))
+                    x++;
+        }
         
         if (nameTextfield.getText().isBlank() || placeOfBirthTextfiled.getText().isBlank() || dateOfBirthTextfield.getText().isBlank() || socialSecurityNumberTextfiled.getText().isBlank() || homeAddressTextfield.getText().isBlank() || phoneTextfiled.getText().isBlank()) {
             alert.setContentText("Kérem, töltse ki az üres mezőket!");
             return false;
-        }else if (isSpecialis(nameTextfield) || isSpecialis(placeOfBirthTextfiled)|| isSpecialis(socialSecurityNumberTextfiled) || isSpecialis(homeAddressTextfield)/* || isSpecialis(phoneTextfiled)*/) {
+        }else if (isSpecialis(nameTextfield) || isSpecialis(placeOfBirthTextfiled)|| isSpecialis(homeAddressTextfield)) {
             alert.setContentText("A bemenetek között ne szerepeltessen speciális karaktereket!");
             return false;
         }else if (isSzam(nameTextfield) ||isSzam(placeOfBirthTextfiled)) {
@@ -149,23 +170,27 @@ public class FXMLLakossagSceneController implements Initializable {
         }else if (isBetu(dateOfBirthTextfield) || isBetu(socialSecurityNumberTextfiled) || isBetu(phoneTextfiled)) {
             alert.setContentText("A születési dátum, a TAJ szám és a telefonszám nem tartalmazhat betűket!");
             return false;
-        }else if (isDatum(dateOfBirthTextfield)) {
+        }else if (x != 0) {
+            alert.setContentText("Ilyen ember már szerepel az adatbázisban!");
+            return false;
+        }  else if (isDatum(dateOfBirthTextfield)) {
             alert.setContentText("Kérem, YYYY-MM-DD formátumban adja meg a születési dátumat!");
             return false;
-        }else if (genderChoiceBox.getValue().equals("-Please select from the list!-")) {
+        }else if (genderChoiceBox.getValue().equals("-Please, select from the list!-")) {
             alert.setContentText("Kérem, válasszon a listából!");
             return false;
-        }else if (isPhone(phoneTextfiled)) {
-            alert.setContentText("Kérem, '+'-val kezdje a telefonszámot!");
+        }else if (isTaj(socialSecurityNumberTextfiled)) {
+            alert.setContentText("Kérem, XXX-XXX-XXX formátumban adja meg a TAJ számot!");
             return false;
-        }else if (socialSecurityNumberTextfiled.getText().length() != 9) {
-            alert.setContentText("Kérem, 9 számból álló TAJ számot adjon meg!");
+        }else if (isPhone(phoneTextfiled)) {
+            alert.setContentText("Kérem, '+'-val kezdje a telefonszámot és 11 szám kövesse azt!");
             return false;
         }
         
         return true;
     }
     
+    //hibas bementek hibauzenetei az allatok feltöltéséhez
     private boolean hibasBemenet_animal(Alert alert) throws SQLException{
         alert.setTitle("Error!");
         alert.setHeaderText("A adatbázisba való feltöltés nem történt meg!");
@@ -186,23 +211,24 @@ public class FXMLLakossagSceneController implements Initializable {
         }else if (isSpecialis(nameTextfield_animal) || isSpecialis(speciesTextfield) || isSpecialis(ownerIDTextfield)) {
             alert.setContentText("A bemenetek között ne szerepeltessen speciális karaktereket!");
             return false;
-        }else if (x == 0) {
-            alert.setContentText("Nincs ilyen nevű ember az adatbázisban!");
-            return false;
-        }else if (genderChoiceBox_animal.getValue().equals("-Please select from the list!-")) {
-            alert.setContentText("Kérem, válasszon a listából!");
+        }else if (isSzam(nameTextfield_animal) ||isSzam(speciesTextfield)) {
+            alert.setContentText("A név és a faj nem tartalmazhat számokat!");
             return false;
         }else if (isDatum(dateOfBirthTextfiled_animal)) {
             alert.setContentText("Kérem, YYYY-MM-DD formátumban adja meg a születési dátumat!");
             return false;
-        }else if (isSzam(nameTextfield_animal) ||isSzam(speciesTextfield)) {
-            alert.setContentText("A név és a faj nem tartalmazhat számokat!");
+        }else if (x == 0) {
+            alert.setContentText("Nincs ilyen nevű ember az adatbázisban!");
             return false;
-        }     
+        }else if (genderChoiceBox_animal.getValue().equals("-Please, select from the list!-")) {
+            alert.setContentText("Kérem, válasszon a listából!");
+            return false;
+        }    
         
         return true;
     }
     
+    //a model beállítása és egy ember feltöltése az adatbázisba
     private void SetAndUploadModel(){
         model.getEmber().setDateOfBirth(dateOfBirthTextfield.getText());
         model.getEmber().setGender(genderChoiceBox.getValue());
@@ -225,6 +251,7 @@ public class FXMLLakossagSceneController implements Initializable {
         }
     }
     
+    //a model beállítása és egy állat feltöltése az adatbázisba
     private void SetAndUploadModelAnimal() throws SQLException{
         Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
         Statement st = conn.createStatement();
@@ -276,7 +303,7 @@ public class FXMLLakossagSceneController implements Initializable {
     }
 
     @FXML
-    void handleUploadButtonPushed() throws IOException, ClassNotFoundException{
+    void handleUploadButtonPushed() throws SQLException{
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         if (hibasBemenet_ember(alert)) {
             SetAndUploadModel();
@@ -289,36 +316,8 @@ public class FXMLLakossagSceneController implements Initializable {
     }
 
     @FXML
-    void animal_handleCancelButtonPushed() throws IOException, SQLException{
+    void animal_handleCancelButtonPushed() throws IOException{
         ujAllatAblak();
-        /*
-        
-        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
-        Statement st = conn.createStatement();
-        //String string = ownerIDTextfield.getText();
-        ResultSet  rs = st.executeQuery("SELECT * from people");
-        ResultSetMetaData nevek = rs.getMetaData();
-        int x = 0;
-        while(rs.next()){
-            for(int i = 1; i <= nevek.getColumnCount();i++){
-                if (rs.getString(i).equals(ownerIDTextfield.getText())){
-                    //System.out.println(rs.getString(i));
-                    x++;
-                }
-                /*if(i > 1) 
-                    System.out.print(", ");
-                
-                String columnValue = rs.getString(i);
-                System.out.print(columnValue);
-            }
-        }
-        //System.out.println("");
-            if (x == 0)
-                System.out.println("nincs ilyen");
-            else{
-                System.out.println("van ilyen");
-            }*/
-
     }
 
     @FXML
@@ -336,9 +335,9 @@ public class FXMLLakossagSceneController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        genderChoiceBox.setValue("-Please select from the list!-");
+        genderChoiceBox.setValue("-Please, select from the list!-");
         genderChoiceBox.setItems(GenderList);
-        genderChoiceBox_animal.setValue("-Please select from the list!-");
+        genderChoiceBox_animal.setValue("-Please, select from the list!-");
         genderChoiceBox_animal.setItems(GenderList);
     }
 
