@@ -72,7 +72,7 @@ public class FXMLLakossagSceneController implements Initializable {
         homeAddressTextfield.setText("");
         phoneTextfiled.setText("");
         socialSecurityNumberTextfiled.setText("");
-        genderChoiceBox.setValue("-Please select from the list!-");
+        genderChoiceBox.setValue("-Please, select from the list!-");
     }
     
     //allat ablak kiüritése
@@ -80,7 +80,7 @@ public class FXMLLakossagSceneController implements Initializable {
         nameTextfield_animal.setText("");
         dateOfBirthTextfiled_animal.setText("");
         ownerIDTextfield.setText("");
-        genderChoiceBox_animal.setValue("-Please select from the list!-");
+        genderChoiceBox_animal.setValue("-Please, select from the list!-");
         speciesTextfield.setText("");        
     }
     
@@ -153,9 +153,11 @@ public class FXMLLakossagSceneController implements Initializable {
         ResultSet  rs = st.executeQuery("SELECT * from people");
         int x = 0;
         while(rs.next()){
-            for(int i = 1; i <= rs.getMetaData().getColumnCount();i++)
-                if (rs.getString(i).equals(nameTextfield.getText()) && rs.getString(i-3).equals(dateOfBirthTextfield.getText()))
-                    x++;
+            for(int i = 1; i <= rs.getMetaData().getColumnCount();i++){
+                if (!nameTextfield.getText().isBlank()) 
+                    if (rs.getString(i).equals(nameTextfield.getText()) && rs.getString(i-3).equals(dateOfBirthTextfield.getText()))
+                        x++;
+            }
         }
         
         if (nameTextfield.getText().isBlank() || placeOfBirthTextfiled.getText().isBlank() || dateOfBirthTextfield.getText().isBlank() || socialSecurityNumberTextfiled.getText().isBlank() || homeAddressTextfield.getText().isBlank() || phoneTextfiled.getText().isBlank()) {
