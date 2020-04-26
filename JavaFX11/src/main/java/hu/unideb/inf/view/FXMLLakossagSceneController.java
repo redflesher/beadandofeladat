@@ -3,18 +3,29 @@ package hu.unideb.inf.view;
 import hu.unideb.inf.hibernate.HibernateUtil;
 import hu.unideb.inf.model.Model;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.URL;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
+import javafx.util.Pair;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -64,6 +75,18 @@ public class FXMLLakossagSceneController implements Initializable {
     @FXML
     private TextField speciesTextfield;
     
+    @FXML
+    private TextField search_nameTextfield;
+
+    @FXML
+    private TextField search_placeOfBirthTextfiled;
+
+    @FXML
+    private TextField search_dateOfBirthTextfield;
+
+    @FXML
+    private TextField search_homeAddressTextfield;
+    
     //ember ablak kiüritése
     private void ujEmberAblak(){
         dateOfBirthTextfield.setText("");
@@ -101,8 +124,7 @@ public class FXMLLakossagSceneController implements Initializable {
             return textField.getText().length() != 10;
         } catch (ParseException ex) {
             return true;
-        }
-        
+        }        
     }
     
     //telefonszam-e
@@ -333,6 +355,103 @@ public class FXMLLakossagSceneController implements Initializable {
             ujAllatAblak();
         }
         alert.showAndWait();
+    }
+    
+    private boolean searchResult(Alert alert) throws SQLException{
+        alert.setTitle("Result");
+        alert.setHeaderText("!!!!!!");
+        
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
+        Statement st = conn.createStatement();
+        ResultSet  rs = st.executeQuery("SELECT * from people");
+        ResultSetMetaData nevek = rs.getMetaData();
+        int columns = nevek.getColumnCount();
+        int x = 0;
+        while(rs.next()){
+            for(int i = 1; i <= columns;i++){
+                if (!search_nameTextfield.getText().isBlank())                    
+                if (rs.getString(i).equals(search_nameTextfield.getText())){
+                    model.getEmber().setId(Integer.parseInt(rs.getString(i-4)));
+                    model.getEmber().setDateOfBirth(rs.getString(i-3));
+                    model.getEmber().setGender(rs.getString(i-2));
+                    model.getEmber().setHomeAddress(rs.getString(i-1));
+                    model.getEmber().setName(rs.getString(i));
+                    model.getEmber().setPhoneNumber(rs.getString(i+1));
+                    model.getEmber().setPlaceOfBirth(rs.getString(i+2));
+                    model.getEmber().setTbNumber(rs.getString(i+3));
+                    x = 1;
+                    return true;
+                }
+            }
+        }
+        if (x == 0) {
+            alert.setHeaderText("nincs ilyen eredmény");
+            return false;
+        }
+        return false;
+    }
+    
+    @FXML
+    void handleSearchButtonPushed() throws SQLException {
+        
+        String str = "";
+        
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
+        Statement st = conn.createStatement();
+        ResultSet  rs = st.executeQuery("SELECT * from people");
+        ResultSetMetaData nevek = rs.getMetaData();
+        int columns = nevek.getColumnCount();
+        int x = 0;
+        while(rs.next()){
+            for(int i = 1; i <= columns;i++){
+                if (!search_nameTextfield.getText().isBlank())                    
+                if (rs.getString(i).equals(search_nameTextfield.getText())){
+                    model.getEmber().setId(Integer.parseInt(rs.getString(i-4)));
+                    model.getEmber().setDateOfBirth(rs.getString(i-3));
+                    model.getEmber().setGender(rs.getString(i-2));
+                    model.getEmber().setHomeAddress(rs.getString(i-1));
+                    model.getEmber().setName(rs.getString(i));
+                    model.getEmber().setPhoneNumber(rs.getString(i+1));
+                    model.getEmber().setPlaceOfBirth(rs.getString(i+2));
+                    model.getEmber().setTbNumber(rs.getString(i+3));
+                    x = 1;
+                    str += model.getEmber().toString() + "\n\n\n";
+                }
+            }
+        }
+        
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        //if (searchResult(alert)) {
+            alert.setTitle("Result");
+            alert.setHeaderText("Van ilyen ember az adatbázisban.");
+
+            //String str = model.getEmber().toString();
+
+            Label label = new Label("A keresés eredménye:");
+
+            TextArea textArea = new TextArea(str);
+            textArea.setEditable(false);
+            textArea.setWrapText(true);
+
+            textArea.setMaxWidth(Double.MAX_VALUE);
+            textArea.setMaxHeight(Double.MAX_VALUE);
+            GridPane.setVgrow(textArea, Priority.ALWAYS);
+            GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+            GridPane content = new GridPane();
+            content.setMaxWidth(Double.MAX_VALUE);
+            content.add(label, 0, 0);
+            content.add(textArea, 0, 1);
+
+            alert.getDialogPane().setContent(content);
+        //}
+        alert.showAndWait();
+    }
+
+    @FXML
+    void handleSearchCancelButtonPushed() {
+
     }
     
     @Override
