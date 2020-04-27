@@ -330,7 +330,7 @@ public class FXMLLakossagSceneController implements Initializable {
     }
 
     @FXML
-    void handleUploadButtonPushed() throws SQLException{
+    void handleUploadButtonPushed() throws SQLException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         if (hibasBemenet_ember(alert)) {
             SetAndUploadModel();
@@ -420,6 +420,10 @@ public class FXMLLakossagSceneController implements Initializable {
                     x = 1;
                     str += model.getEmber().toString() + "\n\n\n";
                 }
+                
+               /* switch(){
+                    
+                }*/
             }
         }
         
