@@ -16,11 +16,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+<<<<<<< HEAD
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+=======
+>>>>>>> 8ced4722fa9ca52135e8bdbf1d92852be8553e61
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -74,6 +77,7 @@ public class FXMLLakossagSceneController implements Initializable {
     
     @FXML
     private TextField speciesTextfield;
+<<<<<<< HEAD
     
     @FXML
     private TextField search_nameTextfield;
@@ -254,6 +258,52 @@ public class FXMLLakossagSceneController implements Initializable {
     
     //a model beállítása és egy ember feltöltése az adatbázisba
     private void SetAndUploadModel(){
+=======
+    //SEARCH
+    @FXML
+    private TextField searchnameTextfield;
+
+    @FXML
+    private TextField searchplaceOfBirthTextfiled;
+
+    @FXML
+    private TextField searchdateOfBirthTextfield;
+
+    @FXML
+    private TextField searchgenderTextfield;
+
+    @FXML
+    private TextField searchsocialSecurityNumberTextfiled;
+
+    @FXML
+    private TextField searchhomeAddressTextfield;
+
+    @FXML
+    private TextField searchphoneTextfiled;
+
+    @FXML
+    private TextField nameTextfield_search;
+
+    @FXML
+    private TextField nameTextfield_animal_search;
+
+    @FXML
+    private TextField searchnameTextfield_animal;
+
+    @FXML
+    private TextField searchdateOfBirthTextfiled_animal;
+
+    @FXML
+    private TextField searchownerIDTextfield_animal;
+
+    @FXML
+    private TextField searchgenderTextfield_animal;
+
+    @FXML
+    private TextField searchspeciesTextfield_animal;
+    //SEARCH
+    void SetAndUploadModel(){
+>>>>>>> 8ced4722fa9ca52135e8bdbf1d92852be8553e61
         model.getEmber().setDateOfBirth(dateOfBirthTextfield.getText());
         model.getEmber().setGender(genderChoiceBox.getValue());
         model.getEmber().setHomeAddress(homeAddressTextfield.getText());
@@ -453,6 +503,99 @@ public class FXMLLakossagSceneController implements Initializable {
     void handleSearchCancelButtonPushed() {
 
     }
+    //SEARCH
+     @FXML
+    void handleCancelSearchButtonPushed() {
+        searchdateOfBirthTextfield.setText("");
+        searchplaceOfBirthTextfiled.setText("");
+        searchnameTextfield.setText("");
+        searchgenderTextfield.setText("");
+        searchhomeAddressTextfield.setText("");
+        searchphoneTextfiled.setText("");
+        searchsocialSecurityNumberTextfiled.setText("");
+    }
+
+    @FXML
+    void handleCancelSearchButtonPushed_animal() {
+        searchnameTextfield_animal.setText("");
+        searchdateOfBirthTextfiled_animal.setText("");
+        searchownerIDTextfield_animal.setText("");
+        searchgenderTextfield_animal.setText("");
+        searchspeciesTextfield_animal.setText("");
+    }
+
+    @FXML
+    void handleSearchButtonPushed() throws SQLException {
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
+        Statement st = conn.createStatement();
+        String string = nameTextfield_search.getText();
+        ResultSet  rs = st.executeQuery("SELECT * from people");
+        ResultSetMetaData nevek = rs.getMetaData();
+        int columns = nevek.getColumnCount();
+        boolean van = false;
+        while(rs.next()){
+            for(int i = 1; i <= columns;i++){
+                if (rs.getString(i).equals(string)){
+                    searchnameTextfield.setText(rs.getString(i));
+                    searchplaceOfBirthTextfiled.setText(rs.getString(i+2));
+                    searchdateOfBirthTextfield.setText(rs.getString(i-3));
+                    searchgenderTextfield.setText(rs.getString(i-2));
+                    searchphoneTextfiled.setText(rs.getString(i+1));
+                    searchhomeAddressTextfield.setText(rs.getString(i-1));
+                    searchsocialSecurityNumberTextfiled.setText(rs.getString(i+3));
+                    van = true;
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Search");
+                    alert.setHeaderText("");
+                    alert.setContentText("People found!");
+                    alert.showAndWait();
+                }
+            }
+        }
+        if(van == false){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Search");
+            alert.setHeaderText("");
+            alert.setContentText("People not found!");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void handleSearchButtonPushed_animal() throws SQLException {
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
+        Statement st = conn.createStatement();
+        String string = nameTextfield_search.getText();
+        ResultSet  rs = st.executeQuery("SELECT * from animals");
+        ResultSetMetaData nevek = rs.getMetaData();
+        int columns = nevek.getColumnCount();
+        boolean van = false;
+        while(rs.next()){
+            for(int i = 1; i <= columns;i++){
+                if (rs.getString(i).equals(string)){
+                    searchnameTextfield_animal.setText(rs.getString(i));
+                    searchgenderTextfield_animal.setText(rs.getString(i+1));
+                    searchdateOfBirthTextfiled_animal.setText(rs.getString(i+2));
+                    searchspeciesTextfield_animal.setText(rs.getString(i-1));
+                    searchownerIDTextfield_animal.setText(rs.getString(i-2));
+                    van = true;
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Search");
+                    alert.setHeaderText("");
+                    alert.setContentText("Pet found!");
+                    alert.showAndWait();
+                }
+            }
+        }
+        if(van == false){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Search");
+            alert.setHeaderText("");
+            alert.setContentText("People not found!");
+            alert.showAndWait();
+        }
+    }
+    //SEARCH
     
     @Override
     public void initialize(URL url, ResourceBundle rb){
