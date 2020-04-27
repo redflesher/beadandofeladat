@@ -81,11 +81,8 @@
                   </AnchorPane>
               </content>
             </Tab>
-<<<<<<< HEAD
             <Tab text="Animal Register">
-=======
-            <Tab style="color: red;" text="Pet Register">
->>>>>>> 8ced4722fa9ca52135e8bdbf1d92852be8553e61
+
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0">
                      <children>
@@ -149,16 +146,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-<<<<<<< HEAD
-            <Tab text="People Search">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0">
-                     <children>
-                        <GridPane layoutY="39.0" prefHeight="206.0" prefWidth="650.0">
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.20001220703125" minWidth="10.0" prefWidth="97.00003662109376" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.7999633789062" minWidth="10.0" prefWidth="233.60001220703126" />
-=======
+
             <Tab style="color: red;" text="Search">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0">
@@ -167,7 +155,6 @@
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.20001220703125" minWidth="10.0" prefWidth="126.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.7999633789062" minWidth="10.0" prefWidth="209.0" />
->>>>>>> 8ced4722fa9ca52135e8bdbf1d92852be8553e61
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.20001220703125" minWidth="10.0" prefWidth="96.39995117187499" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.600048828125" minWidth="10.0" prefWidth="217.600048828125" />
                            </columnConstraints>
@@ -175,107 +162,40 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-<<<<<<< HEAD
                            </rowConstraints>
                            <children>
                               <Label text="Name:">
-=======
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <Label text="Name:" GridPane.rowIndex="1">
->>>>>>> 8ced4722fa9ca52135e8bdbf1d92852be8553e61
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
                               </Label>
-<<<<<<< HEAD
                               <Label text="Place of Birth:" wrapText="true" GridPane.columnIndex="2">
-=======
-                              <Label text="Place of Birth:" wrapText="true" GridPane.rowIndex="2">
->>>>>>> 8ced4722fa9ca52135e8bdbf1d92852be8553e61
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
                               </Label>
-<<<<<<< HEAD
                               <Label text="Date of Birth:" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-=======
-                              <Label text="Date of Birth:" wrapText="true" GridPane.rowIndex="3">
->>>>>>> 8ced4722fa9ca52135e8bdbf1d92852be8553e61
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
                               </Label>
-<<<<<<< HEAD
                               <Label text="Home Address:" wrapText="true" GridPane.rowIndex="1">
-=======
-                              <Label prefHeight="17.0" prefWidth="52.0" text="Gender:" GridPane.rowIndex="4">
->>>>>>> 8ced4722fa9ca52135e8bdbf1d92852be8553e61
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
                               </Label>
-<<<<<<< HEAD
                               <TextField fx:id="search_nameTextfield" maxWidth="200.0" GridPane.columnIndex="1" />
+                              <TextField fx:id="search_homeAddressTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <TextField fx:id="search_placeOfBirthTextfiled" maxWidth="200.0" GridPane.columnIndex="3" />
                               <TextField fx:id="search_dateOfBirthTextfield" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <TextField fx:id="search_homeAddressTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                           </children>
+                              </children>
                         </GridPane>
                         <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSearchButtonPushed" prefHeight="56.0" prefWidth="122.0" text="Search">
-=======
-                              <Label text="Social Security Number:" wrapText="true" GridPane.rowIndex="5" />
-                              <Label text="Home Address:" wrapText="true" GridPane.rowIndex="6" />
-                              <Label text="Phone Number:" wrapText="true" GridPane.rowIndex="7" />
-                              <TextField fx:id="searchnameTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField fx:id="searchplaceOfBirthTextfiled" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField fx:id="searchdateOfBirthTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <TextField fx:id="searchgenderTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <TextField fx:id="searchsocialSecurityNumberTextfiled" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                              <TextField fx:id="searchhomeAddressTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                              <TextField fx:id="searchphoneTextfiled" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                              <Label text="Search people:" textAlignment="CENTER" />
-                              <TextField fx:id="nameTextfield_search" maxWidth="200.0" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" />
-                              <Label text="Search pet:" textAlignment="CENTER" GridPane.columnIndex="2" />
-                              <TextField fx:id="nameTextfield_animal_search" maxWidth="200.0" style="-fx-background-color: lightgray;" GridPane.columnIndex="3" />
-                              <Label text="Name:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Label text="Date of Birth:" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                              <Label text="Owner Name:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                              <Label text="Gender:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                              <Label text="Species:" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                              <TextField fx:id="searchnameTextfield_animal" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <TextField fx:id="searchdateOfBirthTextfiled_animal" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                              <TextField fx:id="searchownerIDTextfield_animal" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                              <TextField fx:id="searchgenderTextfield_animal" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                              <TextField fx:id="searchspeciesTextfield_animal" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                           </children>
-                        </GridPane>
-                        <Button layoutX="14.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleSearchButtonPushed" prefHeight="33.0" prefWidth="98.0" text="Search People">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="127.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleCancelSearchButtonPushed" prefHeight="35.0" prefWidth="100.0" text="Cancel">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button layoutX="325.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleSearchButtonPushed_animal" prefHeight="33.0" prefWidth="98.0" text="Search Pet">
->>>>>>> 8ced4722fa9ca52135e8bdbf1d92852be8553e61
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-<<<<<<< HEAD
                         <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSearchCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" text="Cancel">
-=======
-                        <Button layoutX="436.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleCancelSearchButtonPushed_animal" prefHeight="35.0" prefWidth="100.0" text="Cancel">
->>>>>>> 8ced4722fa9ca52135e8bdbf1d92852be8553e61
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
