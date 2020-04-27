@@ -17,7 +17,7 @@
    <children>
       <TabPane prefHeight="410.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-            <Tab style="color: red;" text="People Register">
+            <Tab text="People Register">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0">
                      <children>
@@ -81,7 +81,7 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab style="color: red;" text="Animal Register">
+            <Tab text="Animal Register">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0">
                      <children>
@@ -145,7 +145,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab style="color: red;" text="People Search">
+            <Tab text="People Search">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0">
                      <children>
