@@ -14,7 +14,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/FXMLLakossagScene.fxml"));
         Scene scene = new Scene(loader.load());
-        stage.setTitle("Lakosság Nyilvántartás");
+        stage.setTitle("Lakosság & Állat Nyilvántartás");
         stage.setScene(scene);
         ((FXMLLakossagSceneController)loader.getController()).setModel(new Model());
         

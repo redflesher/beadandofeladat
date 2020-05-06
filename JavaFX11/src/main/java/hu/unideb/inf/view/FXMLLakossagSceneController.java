@@ -48,7 +48,7 @@ public class FXMLLakossagSceneController implements Initializable {
     @FXML
     private TextField dateOfBirthTextfield;
 
-    ObservableList<String> GenderList = FXCollections.observableArrayList("MALE","FEMALE", "-Please, select from the list!-");
+    ObservableList<String> GenderList = FXCollections.observableArrayList("MALE","FEMALE", "-Please, select ...-");
      
     @FXML
     private ChoiceBox<String> genderChoiceBox;
@@ -98,7 +98,7 @@ public class FXMLLakossagSceneController implements Initializable {
         homeAddressTextfield.setText("");
         phoneTextfiled.setText("");
         socialSecurityNumberTextfiled.setText("");
-        genderChoiceBox.setValue("-Please, select from the list!-");
+        genderChoiceBox.setValue("-Please, select ...-");
     }
     
     //allat ablak kiüritése
@@ -106,7 +106,7 @@ public class FXMLLakossagSceneController implements Initializable {
         nameTextfield_animal.setText("");
         dateOfBirthTextfiled_animal.setText("");
         ownerIDTextfield.setText("");
-        genderChoiceBox_animal.setValue("-Please, select from the list!-");
+        genderChoiceBox_animal.setValue("-Please, select ...-");
         speciesTextfield.setText("");        
     }
     
@@ -386,11 +386,11 @@ public class FXMLLakossagSceneController implements Initializable {
                     return true;
                 }
             }
-        }
+        }/*
         if (x == 0) {
-            alert.setHeaderText("nincs ilyen eredmény");
+            alert.setHeaderText("Nincs ilyen eredmény");
             return false;
-        }
+        }*/
         return false;
     }
     
@@ -429,7 +429,7 @@ public class FXMLLakossagSceneController implements Initializable {
         
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        //if (searchResult(alert)) {
+        if (searchResult(alert)) {
             alert.setTitle("Result");
             alert.setHeaderText("Van ilyen ember az adatbázisban.");
 
@@ -452,20 +452,27 @@ public class FXMLLakossagSceneController implements Initializable {
             content.add(textArea, 0, 1);
 
             alert.getDialogPane().setContent(content);
-        //}
-        alert.showAndWait();
+            alert.showAndWait();
+        }else{
+            alert.setTitle("Result");
+            alert.setHeaderText("Nincs ilyen ember az adatbázisban.");
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void handleSearchCancelButtonPushed() {
-
+        search_dateOfBirthTextfield.setText("");
+        search_homeAddressTextfield.setText("");
+        search_nameTextfield.setText("");
+        search_placeOfBirthTextfiled.setText("");
     }
         
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        genderChoiceBox.setValue("-Please, select from the list!-");
+        genderChoiceBox.setValue("-Please, select ...-");
         genderChoiceBox.setItems(GenderList);
-        genderChoiceBox_animal.setValue("-Please, select from the list!-");
+        genderChoiceBox_animal.setValue("-Please, select ...-");
         genderChoiceBox_animal.setItems(GenderList);
     }
 

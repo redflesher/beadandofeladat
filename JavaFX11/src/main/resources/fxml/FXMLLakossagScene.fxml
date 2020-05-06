@@ -12,14 +12,15 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.view.FXMLLakossagSceneController">
    <children>
-      <TabPane prefHeight="410.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane prefHeight="410.0" prefWidth="600.0" style="-fx-background: slategray;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-            <Tab text="People Register">
+            <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="People Register">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: slategray;">
                      <children>
                         <GridPane layoutY="14.0" prefHeight="265.0" prefWidth="650.0">
                           <columnConstraints>
@@ -35,56 +36,80 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Name:">
+                              <Label style="-fx-font-family: consolas;" text="Name:" textFill="WHITE">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Place of Birth:" wrapText="true" GridPane.rowIndex="1">
+                              <Label text="Place of Birth:" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <Label text="Date of Birth:" wrapText="true" GridPane.rowIndex="2">
+                              <Label text="Date of Birth:" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <Label text="Gender:" GridPane.rowIndex="3">
+                              <Label text="Gender:" textFill="WHITE" GridPane.rowIndex="3">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <Label text="Social Security Number:" wrapText="true" GridPane.columnIndex="2" />
-                              <Label text="Home Address:" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Label text="Phone Number:" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                              <TextField fx:id="nameTextfield" maxWidth="200.0" GridPane.columnIndex="1" />
-                              <TextField fx:id="placeOfBirthTextfiled" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField fx:id="dateOfBirthTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField fx:id="socialSecurityNumberTextfiled" maxWidth="200.0" GridPane.columnIndex="3" />
-                              <TextField fx:id="homeAddressTextfield" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <TextField fx:id="phoneTextfiled" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                              <ChoiceBox fx:id="genderChoiceBox" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label text="Social Security Number:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font></Label>
+                              <Label text="Home Address:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font></Label>
+                              <Label text="Phone Number:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font></Label>
+                              <TextField fx:id="nameTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" />
+                              <TextField fx:id="placeOfBirthTextfiled" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="dateOfBirthTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="socialSecurityNumberTextfiled" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" />
+                              <TextField fx:id="homeAddressTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <TextField fx:id="phoneTextfiled" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <ChoiceBox fx:id="genderChoiceBox" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-base-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
-                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleUploadButtonPushed" prefHeight="56.0" prefWidth="122.0" text="Upload">
+                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleUploadButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Upload" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <font>
+                              <Font name="Consolas" size="20.0" />
+                           </font>
                         </Button>
-                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" text="Cancel">
+                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Cancel" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <font>
+                              <Font name="Consolas" size="20.0" />
+                           </font>
                         </Button>
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Animal Register">
+            <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Animal Register">
 
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: slategray;">
                      <children>
                         <GridPane layoutY="14.0" prefHeight="265.0" prefWidth="650.0">
                            <columnConstraints>
@@ -100,56 +125,77 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label text="Name:">
+                              <Label text="Name:" textFill="WHITE">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <Label text="Species:" wrapText="true" GridPane.columnIndex="2">
+                              <Label text="Species:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <Label text="Date of Birth:" wrapText="true" GridPane.rowIndex="1">
+                              <Label text="Date of Birth:" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <Label text="Gender:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Label text="Gender:" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <TextField fx:id="nameTextfield_animal" maxWidth="200.0" GridPane.columnIndex="1" />
-                              <TextField fx:id="dateOfBirthTextfiled_animal" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField fx:id="ownerIDTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField fx:id="speciesTextfield" maxWidth="200.0" GridPane.columnIndex="3" />
-                              <Label text="Owner Name:" GridPane.rowIndex="2">
+                              <TextField fx:id="nameTextfield_animal" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" />
+                              <TextField fx:id="dateOfBirthTextfiled_animal" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="ownerIDTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="speciesTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" />
+                              <Label style="-fx-background-color: transparent;" text="Owner Name:" textFill="WHITE" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <ChoiceBox fx:id="genderChoiceBox_animal" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <ChoiceBox fx:id="genderChoiceBox_animal" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-text-base-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
-                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleUploadButtonPushed" prefHeight="56.0" prefWidth="122.0" text="Upload">
+                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleUploadButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Upload" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <font>
+                              <Font name="Consolas" size="20.0" />
+                           </font>
                         </Button>
-                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" text="Cancel">
+                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Cancel" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <font>
+                              <Font name="Consolas" size="20.0" />
+                           </font>
                         </Button>
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
 
-            <Tab style="color: red;" text="Search">
+            <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Search">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: slategray;">
                      <children>
                         <GridPane layoutY="14.0" prefHeight="265.0" prefWidth="650.0">
                            <columnConstraints>
@@ -164,41 +210,59 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label text="Name:">
+                              <Label text="Name:" textFill="WHITE">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <Label text="Place of Birth:" wrapText="true" GridPane.columnIndex="2">
+                              <Label prefHeight="30.0" prefWidth="116.0" text="Place of Birth:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <Label text="Date of Birth:" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Label text="Date of Birth:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <Label text="Home Address:" wrapText="true" GridPane.rowIndex="1">
+                              <Label text="Home Address:" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
                               </Label>
-                              <TextField fx:id="search_nameTextfield" maxWidth="200.0" GridPane.columnIndex="1" />
-                              <TextField fx:id="search_homeAddressTextfield" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField fx:id="search_placeOfBirthTextfiled" maxWidth="200.0" GridPane.columnIndex="3" />
-                              <TextField fx:id="search_dateOfBirthTextfield" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <TextField fx:id="search_nameTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" />
+                              <TextField fx:id="search_homeAddressTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="search_placeOfBirthTextfiled" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" />
+                              <TextField fx:id="search_dateOfBirthTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-text-inner-color: white; -fx-font-family: consolas;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                               </children>
                         </GridPane>
-                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSearchButtonPushed" prefHeight="56.0" prefWidth="122.0" text="Search">
+                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSearchButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Search" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <font>
+                              <Font name="Consolas" size="20.0" />
+                           </font>
                         </Button>
-                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSearchCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" text="Cancel">
+                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSearchCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Cancel" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <font>
+                              <Font name="Consolas" size="20.0" />
+                           </font>
                         </Button>
                      </children>
                   </AnchorPane>
