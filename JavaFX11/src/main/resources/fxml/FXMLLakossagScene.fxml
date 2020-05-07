@@ -18,7 +18,7 @@
    <children>
       <TabPane prefHeight="410.0" prefWidth="600.0" style="-fx-background: slategray;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-            <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="People Register">
+            <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Ember regisztrálása">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: slategray;">
                      <children>
@@ -36,20 +36,12 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label style="-fx-font-family: consolas;" text="Name:" textFill="WHITE">
+                              <Label style="-fx-font-family: consolas;" text="Név:" textFill="WHITE">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Place of Birth:" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" />
-                                 </GridPane.margin>
-                                 <font>
-                                    <Font name="Consolas" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Date of Birth:" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
+                              <Label text="Születési hely:" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
@@ -57,7 +49,7 @@
                                     <Font name="Consolas" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text="Gender:" textFill="WHITE" GridPane.rowIndex="3">
+                              <Label text="Születési Dátum:" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
@@ -65,15 +57,23 @@
                                     <Font name="Consolas" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text="Social Security Number:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2">
+                              <Label text="Faj:" textFill="WHITE" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text="TAJ szám:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2">
                                  <font>
                                     <Font name="Consolas" size="12.0" />
                                  </font></Label>
-                              <Label text="Home Address:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Label text="Lakhely:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Consolas" size="12.0" />
                                  </font></Label>
-                              <Label text="Phone Number:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                              <Label text="Telefonszám:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <font>
                                     <Font name="Consolas" size="12.0" />
                                  </font></Label>
@@ -83,10 +83,10 @@
                               <TextField fx:id="socialSecurityNumberTextfiled" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" />
                               <TextField fx:id="homeAddressTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                               <TextField fx:id="phoneTextfiled" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                              <ChoiceBox fx:id="genderChoiceBox" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-base-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <ChoiceBox fx:id="genderChoiceBox" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-base-color: red; -fx-mark-color: yellow;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
-                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleUploadButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Upload" textFill="WHITE">
+                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleUploadButtonPushed" prefHeight="56.0" prefWidth="131.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Feltöltés" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -94,7 +94,7 @@
                               <Font name="Consolas" size="20.0" />
                            </font>
                         </Button>
-                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Cancel" textFill="WHITE">
+                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Mégse" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -106,7 +106,7 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Animal Register">
+            <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Állat regisztrálása">
 
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: slategray;">
@@ -125,7 +125,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label text="Name:" textFill="WHITE">
+                              <Label text="Név:" textFill="WHITE">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
@@ -133,7 +133,7 @@
                                     <Font name="Consolas" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text="Species:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2">
+                              <Label text="Faj:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
@@ -141,7 +141,7 @@
                                     <Font name="Consolas" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text="Date of Birth:" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+                              <Label text="Születési Dátum:" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
@@ -149,7 +149,7 @@
                                     <Font name="Consolas" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text="Gender:" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Label text="Nem:" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
@@ -161,7 +161,7 @@
                               <TextField fx:id="dateOfBirthTextfiled_animal" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <TextField fx:id="ownerIDTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <TextField fx:id="speciesTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" />
-                              <Label style="-fx-background-color: transparent;" text="Owner Name:" textFill="WHITE" GridPane.rowIndex="2">
+                              <Label style="-fx-background-color: transparent;" text="Tulajdonos:" textFill="WHITE" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
@@ -172,7 +172,7 @@
                               <ChoiceBox fx:id="genderChoiceBox_animal" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-text-base-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
-                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleUploadButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Upload" textFill="WHITE">
+                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleUploadButtonPushed" prefHeight="56.0" prefWidth="131.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Feltöltés" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -180,7 +180,7 @@
                               <Font name="Consolas" size="20.0" />
                            </font>
                         </Button>
-                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Cancel" textFill="WHITE">
+                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Mégse" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -193,48 +193,25 @@
                </content>
             </Tab>
 
-            <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Search">
+            <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Keresés">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: slategray;">
                      <children>
-                        <GridPane layoutY="14.0" prefHeight="265.0" prefWidth="650.0">
+                        <GridPane layoutY="14.0" prefHeight="328.0" prefWidth="650.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.20001220703125" minWidth="10.0" prefWidth="126.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.7999633789062" minWidth="10.0" prefWidth="209.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.20001220703125" minWidth="10.0" prefWidth="96.39995117187499" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.600048828125" minWidth="10.0" prefWidth="217.600048828125" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.20001220703125" minWidth="10.0" prefWidth="106.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.600048828125" minWidth="10.0" prefWidth="209.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label text="Name:" textFill="WHITE">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" />
-                                 </GridPane.margin>
-                                 <font>
-                                    <Font name="Consolas" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="30.0" prefWidth="116.0" text="Place of Birth:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" />
-                                 </GridPane.margin>
-                                 <font>
-                                    <Font name="Consolas" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Date of Birth:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" />
-                                 </GridPane.margin>
-                                 <font>
-                                    <Font name="Consolas" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Home Address:" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+                              <Label text="Név:" textFill="WHITE">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
@@ -243,27 +220,130 @@
                                  </font>
                               </Label>
                               <TextField fx:id="search_nameTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" />
-                              <TextField fx:id="search_homeAddressTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField fx:id="search_placeOfBirthTextfiled" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" />
-                              <TextField fx:id="search_dateOfBirthTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-text-inner-color: white; -fx-font-family: consolas;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <TextField fx:id="search_animalnameTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label prefHeight="14.0" prefWidth="110.0" text="Állat neve:" textFill="WHITE" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <Button mnemonicParsing="false" onAction="#handleSearchAnimalButtonPushed" prefHeight="36.0" prefWidth="95.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Állat keresése" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Consolas" size="10.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#handleSearchButtonPushed" prefHeight="38.0" prefWidth="95.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Ember keresése" textFill="WHITE" GridPane.columnIndex="2">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Consolas" size="10.0" />
+                                 </font>
+                              </Button>
+                              <Label prefHeight="57.0" prefWidth="110.0" text="Tulajdonos állatainak keresése:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="search_allnameTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button mnemonicParsing="false" onAction="#handleSearchCancelButtonPushed" prefHeight="32.0" prefWidth="104.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Mégse" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Consolas" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#handleSearchAllButtonPushed" prefHeight="36.0" prefWidth="95.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Keresés" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Consolas" size="10.0" />
+                                 </font>
+                              </Button>
                               </children>
                         </GridPane>
-                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSearchButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Search" textFill="WHITE">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Consolas" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSearchCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Cancel" textFill="WHITE">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Consolas" size="20.0" />
-                           </font>
-                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Eltávolítás">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: slategray;">
+                     <children>
+                        <GridPane layoutY="14.0" prefHeight="328.0" prefWidth="650.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.20001220703125" minWidth="10.0" prefWidth="126.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.7999633789062" minWidth="10.0" prefWidth="209.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.20001220703125" minWidth="10.0" prefWidth="106.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.600048828125" minWidth="10.0" prefWidth="209.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Ember neve?" textFill="WHITE">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="remove_nameTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" />
+                              <TextField fx:id="remove_animalnameTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label prefHeight="14.0" prefWidth="110.0" text="Állat neve:" textFill="WHITE" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <Button mnemonicParsing="false" onAction="#handleRemoveAnimalButtonPushed" prefHeight="36.0" prefWidth="95.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Eltávolítás" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Consolas" size="10.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#handleRemoveButtonPushed" prefHeight="38.0" prefWidth="95.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Eltávolítás" textFill="WHITE" GridPane.columnIndex="2">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Consolas" size="10.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#handleRemoveCancelButtonPushed" prefHeight="32.0" prefWidth="104.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Mégse" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Consolas" size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </GridPane>
                      </children>
                   </AnchorPane>
                </content>

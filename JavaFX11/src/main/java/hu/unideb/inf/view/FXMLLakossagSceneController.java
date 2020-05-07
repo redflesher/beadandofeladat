@@ -90,6 +90,18 @@ public class FXMLLakossagSceneController implements Initializable {
     @FXML
     private TextField search_homeAddressTextfield;
     
+     @FXML
+    private TextField search_animalnameTextfield;
+     
+       @FXML
+    private TextField search_allnameTextfield;
+       
+       @FXML
+    private TextField remove_nameTextfield;
+
+    @FXML
+    private TextField remove_animalnameTextfield;
+    
     //ember ablak kiüritése
     private void ujEmberAblak(){
         dateOfBirthTextfield.setText("");
@@ -393,7 +405,7 @@ public class FXMLLakossagSceneController implements Initializable {
         }*/
         return false;
     }
-    
+    /*
     @FXML
     void handleSearchButtonPushed() throws SQLException {
         
@@ -423,7 +435,7 @@ public class FXMLLakossagSceneController implements Initializable {
                 
                /* switch(){
                     
-                }*/
+                }*//*
             }
         }
         
@@ -459,13 +471,204 @@ public class FXMLLakossagSceneController implements Initializable {
             alert.showAndWait();
         }
     }
+*/
+    @FXML
+    void handleSearchButtonPushed() throws SQLException {
+        String str = "";   
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
+        Statement st = conn.createStatement();
+        String sql = "SELECT" +
+                " name as Név," +
+                " home_address as Lakhely," +
+                " date_of_birth as Születési_dátum," +
+                " place_of_birth as Születési_hely," +
+                " tb_number as Személyi_szám," +
+                " gender as Nem" +
+                " FROM" +
+                " PEOPLE "+
+                " WHERE name = '"+search_nameTextfield.getText()+"'";
+        System.out.println(sql);
+        ResultSet  rs = st.executeQuery(sql);
+        ResultSetMetaData nevek = rs.getMetaData();
+        int columns = nevek.getColumnCount();
+        int x = 0;
+        while(rs.next()){
+            for(int i = 1; i <= columns;i++){
+                str += nevek.getColumnLabel(i)+" : "+ rs.getString(i)+"\n";
+                x = 1;
+            }
+        }
+        if(x == 1){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Keresés eredménye");
+                alert.setHeaderText("Van ilyen ember az adatbázisban.");
+                Label label = new Label("A keresés eredménye:");
+                TextArea textArea = new TextArea(str);
+                textArea.setEditable(false);
+                textArea.setWrapText(true);
+
+                textArea.setMaxWidth(Double.MAX_VALUE);
+                textArea.setMaxHeight(Double.MAX_VALUE);
+                GridPane.setVgrow(textArea, Priority.ALWAYS);
+                GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+                GridPane content = new GridPane();
+                content.setMaxWidth(Double.MAX_VALUE);
+                content.add(label, 0, 0);
+                content.add(textArea, 0, 1);
+
+                alert.getDialogPane().setContent(content);
+                alert.showAndWait();
+        }
+        if(x == 0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Keresés eredménye");
+                alert.setHeaderText("Nincs ilyen ember az adatbázisban.");
+                alert.showAndWait();
+        }
+        
+        
+    }
+    
+     @FXML
+    void handleSearchAnimalButtonPushed() throws SQLException {
+        String str = "";   
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
+        Statement st = conn.createStatement();
+        String sql = "SELECT" +
+                " a.name as Név," +
+                " p.name as Tulajdonos," +
+                " a.dateofbirth as Születési_dátum," +
+                " a.gender as Nem," +
+                " a.species as Faj," +
+                " FROM" +
+                " ANIMAL a INNER JOIN PEOPLE p on a.owner_id = p.id "+
+                " WHERE a.name = '"+search_animalnameTextfield.getText()+"'";
+        System.out.println(sql);
+        ResultSet  rs = st.executeQuery(sql);
+        ResultSetMetaData nevek = rs.getMetaData();
+        int columns = nevek.getColumnCount();
+        int x = 0;
+        while(rs.next()){
+            for(int i = 1; i <= columns;i++){
+                str += nevek.getColumnLabel(i)+" : "+ rs.getString(i)+"\n";
+                x = 1;
+            }
+        }
+        if(x == 1){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Keresés eredménye");
+                alert.setHeaderText("Van ilyen állat az adatbázisban.");
+                Label label = new Label("A keresés eredménye:");
+                TextArea textArea = new TextArea(str);
+                textArea.setEditable(false);
+                textArea.setWrapText(true);
+
+                textArea.setMaxWidth(Double.MAX_VALUE);
+                textArea.setMaxHeight(Double.MAX_VALUE);
+                GridPane.setVgrow(textArea, Priority.ALWAYS);
+                GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+                GridPane content = new GridPane();
+                content.setMaxWidth(Double.MAX_VALUE);
+                content.add(label, 0, 0);
+                content.add(textArea, 0, 1);
+
+                alert.getDialogPane().setContent(content);
+                alert.showAndWait();
+        }
+        if(x == 0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Keresés eredménye");
+                alert.setHeaderText("Nincs ilyen állat az adatbázisban.");
+                alert.showAndWait();
+        }
+    }
+     @FXML
+    void handleSearchAllButtonPushed() throws SQLException {
+        String str = "";   
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
+        Statement st = conn.createStatement();
+        String sql = "SELECT p.name as Tulajdonos,a.name as Állat_neve FROM"+
+                " PEOPLE p INNER JOIN ANIMAL a on p.id = a.owner_id "+
+                 " where p.name = '"+ search_allnameTextfield.getText()+"';";
+        System.out.println(sql);
+        ResultSet  rs = st.executeQuery(sql);
+        ResultSetMetaData nevek = rs.getMetaData();
+        int columns = nevek.getColumnCount();
+        int x = 0;
+        int num = 0;
+        while(rs.next()){
+            if(num == 0){
+                for(int i = 1; i <= columns;i++){
+                str += nevek.getColumnLabel(i)+" : "+ rs.getString(i)+"\n";
+                x = 1;
+                num = 1;
+                }
+            }
+            else{
+                for(int i = 2; i <= columns;i++){
+                str += nevek.getColumnLabel(i)+" : "+ rs.getString(i)+"\n";
+                x = 1;
+                }
+            }
+        }
+        if(x == 1){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Keresés eredménye");
+                alert.setHeaderText(search_allnameTextfield.getText()+" állatai");
+                Label label = new Label("A keresés eredménye:");
+                TextArea textArea = new TextArea(str);
+                textArea.setEditable(false);
+                textArea.setWrapText(true);
+
+                textArea.setMaxWidth(Double.MAX_VALUE);
+                textArea.setMaxHeight(Double.MAX_VALUE);
+                GridPane.setVgrow(textArea, Priority.ALWAYS);
+                GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+                GridPane content = new GridPane();
+                content.setMaxWidth(Double.MAX_VALUE);
+                content.add(label, 0, 0);
+                content.add(textArea, 0, 1);
+
+                alert.getDialogPane().setContent(content);
+                alert.showAndWait();
+        }
+        if(x == 0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Keresés eredménye");
+                alert.setHeaderText(search_allnameTextfield.getText()+" nem rendelkezik egy állattal sem.");
+                alert.showAndWait();
+        }
+    }
+    @FXML
+    void handleRemoveAnimalButtonPushed() {
+
+    }
+
+    @FXML
+    void handleRemoveButtonPushed() throws SQLException {
+        String str = "";   
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test_ember","sa","sa");
+        Statement st = conn.createStatement();
+        String sql = "DELETE FROM PEOPLE WHERE NAME = '"+remove_nameTextfield.getText()+"';";
+        int deleteCount = st.executeUpdate(sql);
+        sql = "DELETE FROM PEOPLE WHERE NAME = ?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, remove_nameTextfield.getText());
+        deleteCount = pstmt.executeUpdate();
+    }
+
+    @FXML
+    void handleRemoveCancelButtonPushed() {
+
+    }
 
     @FXML
     void handleSearchCancelButtonPushed() {
-        search_dateOfBirthTextfield.setText("");
-        search_homeAddressTextfield.setText("");
         search_nameTextfield.setText("");
-        search_placeOfBirthTextfiled.setText("");
+        search_animalnameTextfield.setText("");
     }
         
     @Override
