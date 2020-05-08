@@ -262,7 +262,7 @@
                                  </padding>
                               </Label>
                               <TextField id="text-fieldsearchanimals" fx:id="search_allnameTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                              <Button id="buttoncancel" mnemonicParsing="false" onAction="#handleSearchCancelButtonPushed" prefHeight="18.0" prefWidth="77.0" text="Mégse" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                              <Button id="buttoncancel" mnemonicParsing="false" onAction="#handleSearchCancelButtonPushed" prefHeight="34.0" prefWidth="84.0" text="Mégse" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -278,7 +278,7 @@
                                     <Font name="Consolas" size="10.0" />
                                  </font>
                               </Button>
-                              <Button id="buttoncancel" mnemonicParsing="false" onAction="#handleSearchAllPeopleButtonPushed" prefHeight="22.0" prefWidth="165.0" text="Összes ember listázása" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                              <Button id="buttoncancel" mnemonicParsing="false" onAction="#handleSearchAllPeopleButtonPushed" prefHeight="22.0" prefWidth="175.0" text="Összes ember listázása" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
