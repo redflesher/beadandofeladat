@@ -85,15 +85,6 @@ public class FXMLLakossagSceneController implements Initializable {
     
     @FXML
     private TextField search_nameTextfield;
-
-    @FXML
-    private TextField search_placeOfBirthTextfiled;
-
-    @FXML
-    private TextField search_dateOfBirthTextfield;
-
-    @FXML
-    private TextField search_homeAddressTextfield;
     
      @FXML
     private TextField search_animalnameTextfield;
@@ -403,11 +394,7 @@ public class FXMLLakossagSceneController implements Initializable {
                     return true;
                 }
             }
-        }/*
-        if (x == 0) {
-            alert.setHeaderText("Nincs ilyen eredmény");
-            return false;
-        }*/
+        }
         return false;
     }
     /*
@@ -502,6 +489,7 @@ public class FXMLLakossagSceneController implements Initializable {
                 str += nevek.getColumnLabel(i)+" : "+ rs.getString(i)+"\n";
                 x = 1;
             }
+            str += "-------------------------\n";
         }
         if(x == 1){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -559,6 +547,7 @@ public class FXMLLakossagSceneController implements Initializable {
                 str += nevek.getColumnLabel(i)+" : "+ rs.getString(i)+"\n";
                 x = 1;
             }
+            str += "-------------------------\n";
         }
         if(x == 1){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -618,6 +607,7 @@ public class FXMLLakossagSceneController implements Initializable {
                 x = 1;
                 }
             }
+            str += "-------------------------\n";
         }
         if(x == 1){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -830,6 +820,7 @@ public class FXMLLakossagSceneController implements Initializable {
     void handleSearchCancelButtonPushed() {
         search_nameTextfield.setText("");
         search_animalnameTextfield.setText("");
+        search_allnameTextfield.setText("");
     }
     
     

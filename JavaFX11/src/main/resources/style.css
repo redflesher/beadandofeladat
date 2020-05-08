@@ -7,17 +7,29 @@ and open the template in the editor.
     Created on : 2020. máj. 8., 20:19:12
     Author     : zsolt
 */
+.stage{
+    -fx-background-color:  linear-gradient(to left, red 0%, slategray 100%);
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color:  linear-gradient(to left, green 0%, slategray 100%);
+}
 
 .tab{
 -fx-background-color:   slategray;
 -fx-font-family: Consolas;
+-fx-text-base-color:white;
 }
 
 .tab:hover{
--fx-background-color:   darkgreen;}
+-fx-background-color:   darkgreen;
+-fx-text-base-color:white;
+}
 
 .tab:selected{
--fx-background-color:   green;}
+-fx-background-color:   green;
+-fx-text-base-color:white;
+}
 
 #button2 { 
     -fx-background-image: url("search.png");
@@ -47,6 +59,8 @@ and open the template in the editor.
     -fx-background-color: white;
     -fx-background-radius: 8;
     -fx-text-fill: black;
+    -fx-border-radius:8;
+    -fx-border-width:2;
 }
 #buttoncancel:hover{
     -fx-background-color: darkgreen;
@@ -66,3 +80,211 @@ and open the template in the editor.
     -fx-background-repeat: no-repeat;
     -fx-background-position: 90%;
 }
+.text-field{
+    -fx-border-radius: 8;
+    -fx-border-color:white;
+}
+.text-field:hover{
+    -fx-border-radius: 8;
+    -fx-border-color:darkgreen;
+}
+
+.choice-box .context-menu { 
+    -fx-background-color: slategray; 
+}
+.choice-box .menu-item:focused { 
+    -fx-background-color: darkgreen;
+}
+.choice-box .menu-item > .label { 
+    -fx-text-fill: white;
+    -fx-mark-color:white;
+}
+.choice-box .menu-item:focused > .label { 
+    -fx-text-fill: white;
+    -fx-mark-color:white;
+}
+.choice-box{
+    -fx-background-color: transparent;
+    -fx-font-family:Consolas;
+    -fx-border-color:white;
+    -fx-border-radius:8;
+    -fx-text-base-color:white;
+    -fx-mark-color:white;
+}
+.choice-box:hover{
+    -fx-background-color: transparent;
+    -fx-font-family:Consolas;
+    -fx-border-color:darkgreen;
+    -fx-border-radius:8;
+    -fx-text-base-color:darkgreen;
+    -fx-mark-color:darkgreen;
+}
+#text-fieldiaccount{
+    -fx-border-radius: 8;
+    -fx-border-color:white;
+    -fx-background-image: url("account.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+#text-fieldtelefon{
+    -fx-border-radius: 8;
+    -fx-border-color:white;
+    -fx-background-image: url("telefon.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+#text-fieldhouse{
+    -fx-border-radius: 8;
+    -fx-border-color:white;
+    -fx-background-image: url("house.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+#text-fielddate{
+    -fx-border-radius: 8;
+    -fx-border-color:white;
+    -fx-background-image: url("date.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 96%;
+}
+
+#text-fieldnumber{
+    -fx-border-radius: 8;
+    -fx-border-color:white;
+    -fx-background-image: url("number.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+#text-fieldiaccount:hover{
+    -fx-border-radius: 8;
+    -fx-border-color:darkgreen;
+    -fx-background-image: url("account.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+#text-fieldtelefon:hover{
+    -fx-border-radius: 8;
+    -fx-border-color:darkgreen;
+    -fx-background-image: url("telefon.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+#text-fieldhouse:hover{
+    -fx-border-radius: 8;
+    -fx-border-color:darkgreen;
+    -fx-background-image: url("house.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+#text-fielddate:hover{
+    -fx-border-radius: 8;
+    -fx-border-color:darkgreen;
+    -fx-background-image: url("date.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 96%;
+}
+
+#text-fieldnumber:hover{
+    -fx-border-radius: 8;
+    -fx-border-color:darkgreen;
+    -fx-background-image: url("number.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+
+#text-fieldowner{
+    -fx-border-radius: 8;
+    -fx-border-color:white;
+    -fx-background-image: url("owner.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+
+#text-fieldowner:hover{
+    -fx-border-radius: 8;
+    -fx-border-color:darkgreen;
+    -fx-background-image: url("owner.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+
+#text-fieldsearchanimal{
+    -fx-border-radius: 8;
+    -fx-border-color:white;
+    -fx-background-image: url("searchanimal.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+
+#text-fieldsearchanimal:hover{
+    -fx-border-radius: 8;
+    -fx-border-color:darkgreen;
+    -fx-background-image: url("searchanimal.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+
+#text-fieldsearchanimals{
+    -fx-border-radius: 8;
+    -fx-border-color:white;
+    -fx-background-image: url("searchanimals.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+
+#text-fieldsearchanimals:hover{
+    -fx-border-radius: 8;
+    -fx-border-color:darkgreen;
+    -fx-background-image: url("searchanimals.png");
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-size: 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 95%;
+}
+
