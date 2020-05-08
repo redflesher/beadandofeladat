@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,11 +17,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.view.FXMLLakossagSceneController">
    <children>
-      <TabPane prefHeight="410.0" prefWidth="600.0" style="-fx-background: slategray;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane prefHeight="410.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
             <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Ember regisztrálása">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: slategray;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to left, green 0%, slategray 100%);">
                      <children>
                         <GridPane layoutY="14.0" prefHeight="265.0" prefWidth="650.0">
                           <columnConstraints>
@@ -31,8 +32,8 @@
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
@@ -83,10 +84,21 @@
                               <TextField fx:id="socialSecurityNumberTextfiled" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" />
                               <TextField fx:id="homeAddressTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                               <TextField fx:id="phoneTextfiled" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                              <ChoiceBox fx:id="genderChoiceBox" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-base-color: red; -fx-mark-color: yellow;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <ChoiceBox fx:id="genderChoiceBox" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-base-color: black; -fx-mark-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
-                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleUploadButtonPushed" prefHeight="56.0" prefWidth="131.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Feltöltés" textFill="WHITE">
+                        <Button id="buttonupload" layoutX="392.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleUploadButtonPushed" prefHeight="56.0" prefWidth="56.0" style="-fx-background-color: transparent;" textAlignment="CENTER" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Consolas" size="20.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                        <Button id="buttoncancel" layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" text="Mégse">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -94,14 +106,7 @@
                               <Font name="Consolas" size="20.0" />
                            </font>
                         </Button>
-                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Mégse" textFill="WHITE">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Consolas" size="20.0" />
-                           </font>
-                        </Button>
+                        <ImageView fitHeight="62.0" fitWidth="97.0" layoutX="180.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
               </content>
@@ -109,7 +114,7 @@
             <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Állat regisztrálása">
 
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: slategray;">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to left, green 0%, slategray 100%);">
                      <children>
                         <GridPane layoutY="14.0" prefHeight="265.0" prefWidth="650.0">
                            <columnConstraints>
@@ -169,10 +174,10 @@
                                     <Font name="Consolas" size="12.0" />
                                  </font>
                               </Label>
-                              <ChoiceBox fx:id="genderChoiceBox_animal" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-text-base-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <ChoiceBox fx:id="genderChoiceBox_animal" prefHeight="14.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 8; -fx-text-base-color: black; -fx-mark-color: black; -fx-border-radius: 8; -fx-font-family: Consolas;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
-                        <Button layoutX="325.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleUploadButtonPushed" prefHeight="56.0" prefWidth="131.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Feltöltés" textFill="WHITE">
+                        <Button id="buttonupload" layoutX="392.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleUploadButtonPushed" prefHeight="56.0" prefWidth="56.0" style="-fx-background-color: transparent;" textAlignment="CENTER" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -180,7 +185,7 @@
                               <Font name="Consolas" size="20.0" />
                            </font>
                         </Button>
-                        <Button layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Mégse" textFill="WHITE">
+                        <Button id="buttoncancel" layoutX="486.0" layoutY="286.0" mnemonicParsing="false" onAction="#animal_handleCancelButtonPushed" prefHeight="56.0" prefWidth="122.0" text="Mégse">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -195,7 +200,7 @@
 
             <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Keresés">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: slategray;">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to left, green 0%, slategray 100%);">
                      <children>
                         <GridPane layoutY="14.0" prefHeight="328.0" prefWidth="650.0">
                            <columnConstraints>
@@ -232,7 +237,7 @@
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <Button mnemonicParsing="false" onAction="#handleSearchAnimalButtonPushed" prefHeight="36.0" prefWidth="95.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Állat keresése" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Button id="button2" mnemonicParsing="false" onAction="#handleSearchAnimalButtonPushed" prefHeight="36.0" prefWidth="38.0" style="-fx-background-color: transparent;" textAlignment="RIGHT" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -240,7 +245,7 @@
                                     <Font name="Consolas" size="10.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#handleSearchButtonPushed" prefHeight="38.0" prefWidth="95.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Ember keresése" textFill="WHITE" GridPane.columnIndex="2">
+                              <Button id="button2" mnemonicParsing="false" onAction="#handleSearchButtonPushed" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: transparent;" textAlignment="RIGHT" textFill="WHITE" GridPane.columnIndex="2">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -248,7 +253,7 @@
                                     <Font name="Consolas" size="10.0" />
                                  </font>
                               </Button>
-                              <Label prefHeight="57.0" prefWidth="110.0" text="Tulajdonos állatainak keresése:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
+                              <Label prefHeight="57.0" prefWidth="129.0" text="Tulajdonos állatainak keresése:" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
                                  <font>
                                     <Font name="Consolas" size="12.0" />
                                  </font>
@@ -257,7 +262,7 @@
                                  </padding>
                               </Label>
                               <TextField fx:id="search_allnameTextfield" maxWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-font-family: consolas; -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button mnemonicParsing="false" onAction="#handleSearchCancelButtonPushed" prefHeight="32.0" prefWidth="104.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Mégse" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                              <Button id="buttoncancel" mnemonicParsing="false" onAction="#handleSearchCancelButtonPushed" prefHeight="32.0" prefWidth="104.0" text="Mégse" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -265,12 +270,20 @@
                                     <Font name="Consolas" size="18.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#handleSearchAllButtonPushed" prefHeight="36.0" prefWidth="95.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Keresés" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                              <Button id="button2" mnemonicParsing="false" onAction="#handleSearchAllButtonPushed" prefHeight="36.0" prefWidth="38.0" style="-fx-background-color: transparent;" textAlignment="RIGHT" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <font>
                                     <Font name="Consolas" size="10.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#handleSearchAllPeopleButtonPushed" prefHeight="20.0" prefWidth="192.0" style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 8;" text="Összes ember kilistázása" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Consolas" size="12.0" />
                                  </font>
                               </Button>
                               </children>
@@ -281,14 +294,14 @@
             </Tab>
             <Tab style="-fx-background: slategray; -fx-text-base-color: white;" text="Eltávolítás">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: slategray;">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to left, green 0%, slategray 100%);">
                      <children>
-                        <GridPane layoutY="14.0" prefHeight="328.0" prefWidth="650.0">
+                        <GridPane layoutY="7.0" prefHeight="328.0" prefWidth="650.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.20001220703125" minWidth="10.0" prefWidth="126.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.7999633789062" minWidth="10.0" prefWidth="209.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.20001220703125" minWidth="10.0" prefWidth="106.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.600048828125" minWidth="10.0" prefWidth="209.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="183.0" minWidth="10.0" prefWidth="183.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.600048828125" minWidth="10.0" prefWidth="132.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -297,7 +310,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label text="Ember neve?" textFill="WHITE">
+                              <Label text="Ember neve:" textFill="WHITE">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
@@ -318,7 +331,7 @@
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <Button mnemonicParsing="false" onAction="#handleRemoveAnimalButtonPushed" prefHeight="36.0" prefWidth="95.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Eltávolítás" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Button id="buttonremove" mnemonicParsing="false" onAction="#handleRemoveAnimalButtonPushed" prefHeight="36.0" prefWidth="38.0" style="-fx-background-color: transparent;" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -326,7 +339,7 @@
                                     <Font name="Consolas" size="10.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#handleRemoveButtonPushed" prefHeight="38.0" prefWidth="95.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Eltávolítás" textFill="WHITE" GridPane.columnIndex="2">
+                              <Button id="buttonremove" mnemonicParsing="false" onAction="#handleRemoveButtonPushed" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: transparent;" textAlignment="RIGHT" textFill="WHITE" GridPane.columnIndex="2">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -334,7 +347,7 @@
                                     <Font name="Consolas" size="10.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#handleRemoveCancelButtonPushed" prefHeight="32.0" prefWidth="104.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;" text="Mégse" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                              <Button id="buttoncancel" mnemonicParsing="false" onAction="#handleRemoveCancelButtonPushed" prefHeight="32.0" prefWidth="104.0" text="Mégse" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>

@@ -45,6 +45,12 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.4.11.Final</version>
         </dependency>
+        <dependency>
+            <groupId>com.opera</groupId>
+            <artifactId>operadriver</artifactId>
+            <version>1.5</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

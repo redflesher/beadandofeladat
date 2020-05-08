@@ -1,0 +1,68 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2020. máj. 8., 20:19:12
+    Author     : zsolt
+*/
+
+.tab{
+-fx-background-color:   slategray;
+-fx-font-family: Consolas;
+}
+
+.tab:hover{
+-fx-background-color:   darkgreen;}
+
+.tab:selected{
+-fx-background-color:   green;}
+
+#button2 { 
+    -fx-background-image: url("search.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background: transparent;
+    -fx-background-size: 37px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 90%;
+}
+#buttonremove { 
+    -fx-background-image: url("remove.png");
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-background: transparent;
+    -fx-background-radius: 8;
+    -fx-background-size: 37px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 90%;
+}
+.button:hover{
+    -fx-border-color:   white;
+    -fx-border-radius: 8;
+}
+
+#buttoncancel{
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-text-fill: black;
+}
+#buttoncancel:hover{
+    -fx-background-color: darkgreen;
+    -fx-background-radius: 8;
+    -fx-text-fill: white;
+    -fx-border-radius:8;
+    -fx-border-width:2;
+}
+
+#buttonupload {
+    -fx-background-image: url("upload.png");
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-background: transparent;
+    -fx-background-radius: 8;
+    -fx-background-size: 56px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 90%;
+}
