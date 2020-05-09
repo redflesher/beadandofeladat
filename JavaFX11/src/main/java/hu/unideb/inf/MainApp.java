@@ -6,6 +6,7 @@ import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -15,6 +16,9 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/FXMLLakossagScene.fxml"));
         
         Scene scene = new Scene(loader.load());
+        Image image = new Image("/icon.png");
+        
+        stage.getIcons().add(image);
         
         stage.setTitle("Lakosság & Állat Nyilvántartás");
         scene.getStylesheets().add("style.css");
