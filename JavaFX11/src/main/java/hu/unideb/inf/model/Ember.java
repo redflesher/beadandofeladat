@@ -132,7 +132,14 @@ public class Ember implements Serializable{
 
     @Override
     public String toString() {
-        return "Ember{" + "id=" + id + ", gender=" + gender + ", name=" + name + ", dateOfBirth=" + dateOfBirth + ", placeOfBirth=" + placeOfBirth + ", tbNumber=" + tbNumber + ", homeAddress=" + homeAddress + ", phoneNumber=" + phoneNumber + '}';
+        return "Name: " + name + "\n"
+                + "ID: " + id + "\n"
+                + "Date of Birth: " + dateOfBirth + "\n"
+                + "Place of Birth: " + placeOfBirth + "\n"
+                + "Home Address: " + homeAddress + "\n"
+                + "Gender: " + gender + "\n"
+                + "Social Security Number: " + tbNumber + "\n"
+                + "Phone Number: " + phoneNumber;
     }
     
 }
